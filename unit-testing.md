@@ -15,7 +15,6 @@ It is the test on a “unit of work” (usually a function) that provides verifi
 * Ultimately unit test prevent the “rotting” of the codebase.
 
 ## Examples of unit testing.
-`const add = function(int1, int2) {return int1 + int2; }`
 ```javascript
 const add = function(int1, int2)
 {
@@ -55,10 +54,11 @@ describe('#add', function ()
 ```
 
 ## Assignment.
-* Difficult: Create a `dateToTimestamp` function, which accepts an ISO date, returns the Unix timestamp, throws exception if date is invalid. Hint: You can use the `moment(date).format('X')` method of the `moment.js` library.
+* Difficult: Create a `dateToTimestamp(date)` function, which accepts an ISO 8601 date, returns the Unix timestamp, throws exception if date is invalid. Hint: You can use the `moment(date).format('X')` method of the `moment.js` library.
 * Easy: Create a calulator object with `add`, `delete`, `multiply`, `divide` methods, and provide a test for each method.
 
 ## Requirements.
 * [Node.js](https://nodejs.org/en/download/)
-* Git Bash (https://git-scm.com/downloads)
+* [Git Bash](https://git-scm.com/downloads)
+
 For both of them, you can download the portable binaries and place them in a `bin` folder at the root of your user's folder. Example: `C:\Users\Vangelisp\bin`.
