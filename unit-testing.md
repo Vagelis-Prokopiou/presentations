@@ -87,6 +87,8 @@ describe('#resetElementValue(domSelector)', function()
 * Difficult: Create a `dateToTimestamp(date)` function, which accepts an ISO 8601 date, returns the Unix timestamp, throws exception if date is invalid. Hint: You can use the `moment(date).format('X')` method of the `moment.js` library.
 * Easy: Create a calculator object with `add`, `delete`, `multiply`, `divide` methods, and provide a test for each method.
 
+Use [Jest](https://facebook.github.io/jest/docs/en/getting-started.html) as the testing framework.
+
 ## Requirements.
 * [Node.js](https://nodejs.org/en/download/)
 * [Git Bash](https://git-scm.com/downloads)
