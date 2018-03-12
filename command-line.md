@@ -1,7 +1,7 @@
 # Command line
 
 ## Examples
-```bash
+```shell
 # Kill Windows running processes.
 process='chromedriver';
 ps -W | grep -i "$process" | awk '{print $1}' | while read pid; do taskkill //PID ${pid}; done;
