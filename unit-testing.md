@@ -94,3 +94,5 @@ Use [Jest](https://facebook.github.io/jest/docs/en/getting-started.html) as the 
 * [Git Bash](https://git-scm.com/downloads)
 
 For both of them, you can download the portable binaries and place them in a `bin` folder at the root of your user's folder. Example: `C:\Users\Vangelisp\bin`.
+
+Presentation URL: http://slides.com/vagelis_prokopiou/deck#/
