@@ -4,7 +4,7 @@
 ```shell
 # Kill Windows running processes.
 process='chromedriver';
-ps -W | grep -i "$process" | awk '{print $1}' | while read pid; do taskkill //PID ${pid}; done;
+ps -W | grep -i "$process" | awk '{print $1}' | while read pid; do taskkill //F //PID ${pid}; done;
 
 # Act on multitude of folders.
 startingPath='/c/Users/Vangelisp';
