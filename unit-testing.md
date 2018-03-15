@@ -5,14 +5,14 @@
 It is the test on a “unit of work” (usually a function) that provides verification that a known, fixed input produces a known, fixed output.
 
 ## What are the benefits of unit testing?
-* Unit tests find bugs early.
-* Unit tests significantly reduce production bugs.
-* Unit tests make complex code easy to understand.
-* Unit tests provide dependant documentation for the codebase.
-* Unit tests save development time (less time spend on bug hunting).
-* Unit tests make easier (even possible in some cases) to change and refactor the code.
-* Unit tests remove the fear of changing/breaking the codebase.
-* Ultimately, unit test prevent the “rotting” of the codebase.
+1. Unit tests find bugs early.
+2. Unit tests significantly reduce production bugs.
+3. Unit tests make complex code easy to understand.
+4. Unit tests provide dependant documentation for the codebase.
+5. Unit tests save development time (less time spend on bug hunting).
+6. Unit tests make easier (even possible in some cases) to change and refactor the code.
+7. Unit tests remove the fear of changing/breaking the codebase.
+8. Unit test prevent the “rotting” of the codebase.
 
 ## Examples of unit testing.
 ```javascript
