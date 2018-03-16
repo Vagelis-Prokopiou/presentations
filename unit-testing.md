@@ -20,13 +20,64 @@ It is the test on a “unit of work” (usually a function) that provides verifi
 8. Unit tests remove the fear of changing/breaking the codebase.
 9. Unit tests prevent the “rotting” of the codebase.
 
+## What are the negative aspects of unit testing?
+Most people say it is the time needed to write the tests.
+
+Experience shows that writing tests reduces the overall time needed to reach production.
+
 ## What is the recipe for good unit tests?
 
-No secret recipe. Writing testable code.
+No secret recipe.
+1. Writing testable code.
+2. Write tests first.
 
 ## Examples of testable code.
+### Bad
+```javascript
+// Bad
+function emailClients(clients)
+{
+  clients.forEach(function(client)
+  {
+    const clientRecord = database.lookup(client);
+    if (clientRecord.isActive())
+    {
+      email(client);
+    }
+  });
+}
+```
+
+### Good
+```javascript
+// Good.
+function emailActiveClients(clients)
+{
+  clients
+    .filter(isActiveClient)
+    .forEach(email);
+}
+
+function isActiveClient(client)
+{
+  const clientRecord = database.lookup(client);
+  return clientRecord.isActive();
+}
+```
 
 ## Examples of unit testing.
+
+### Test suite structure
+```javascript
+describe('suiteName', function()
+{
+    test('testDescription', function()
+    {
+        expect(expectation).toBe(expectedResult);
+    });
+});
+```
+
 ```javascript
 // Example 1, involving pure functions:
 
