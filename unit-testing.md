@@ -1,4 +1,9 @@
-# Unit testing
+# Testing (unit testing)
+
+## Types of testing
+1. Unit testing.
+2. Integration testing (a.k.a acceptance/end to end testing).
+3. Performance testing.
 
 ## What is a unit test?
 
@@ -9,10 +14,17 @@ It is the test on a “unit of work” (usually a function) that provides verifi
 2. Unit tests significantly reduce production bugs.
 3. Unit tests make complex code easy to understand.
 4. Unit tests provide dependant documentation for the codebase.
-5. Unit tests save development time (less time spend on bug hunting).
+5. Unit tests save development time (less time spent on bug hunting).
 6. Unit tests make easier (even possible in some cases) to change and refactor the code.
-7. Unit tests remove the fear of changing/breaking the codebase.
-8. Unit test prevent the “rotting” of the codebase.
+7. Unit tests create better APIs.
+8. Unit tests remove the fear of changing/breaking the codebase.
+9. Unit tests prevent the “rotting” of the codebase.
+
+## What is the recipe for good unit tests?
+
+No secret recipe. Writing testable code.
+
+## Examples of testable code.
 
 ## Examples of unit testing.
 ```javascript
@@ -24,29 +36,16 @@ describe('#add', function ()
 {
     test('should correctly add two integers', function ()
     {
-        tests = [
-            {int1: 1, int2: 1, expected: 2}
-            , {int1: 100, int2: 1, expected: 101}
-        ];
-
-        tests.forEach(function (test)
-        {
-            expect(add(test.int1, test.int2)).toBe(test.expected);
-        });
+        expect(add(1, 1)).toBe(2);
+        expect(add(-1, 1)).toBe(0);
+        expect(add(1.9, 0.1)).toBe(2);
     });
 
     test('should throw exception if invalid parameter is passed', function ()
     {
-        tests = [
-            {int1: null, int2: 1}
-            , {int1: undefined, int2: 1}
-            , {int1: false, int2: 1}
-        ];
-
-        tests.forEach(function (test)
-        {
-            expect(function() { add(test.int1, test.int2); }).toThrowError('Invalid parameter');
-        });
+        expect(function() { add(null, 1); }).toThrowError('Invalid parameter');
+        expect(function() { add(undefined, 1); }).toThrowError('Invalid parameter');
+        expect(function() { add(false, 1); }).toThrowError('Invalid parameter');
     });
 });
 ```
@@ -71,7 +70,7 @@ describe('#resetElementValue(domSelector)', function()
         $('#fixture').remove();
     });
 
-    it('should reset (set to empty string) the value of the provided selector', function()
+    test('should reset (set to empty string) the value of the provided selector', function()
     {
         resetElementValue('#packageID');
         resetElementValue('#covers');
@@ -85,7 +84,7 @@ describe('#resetElementValue(domSelector)', function()
 
 ## Assignment.
 * Difficult: Create a `dateToTimestamp(date)` function, which accepts an ISO 8601 date, returns the Unix timestamp, throws exception if date is invalid. Hint: You can use the `moment(date).format('X')` method of the `moment.js` library.
-* Easy: Create a calculator object with `add`, `delete`, `multiply`, `divide` methods, and provide a test for each method.
+* Easy: Create a Calculator with `add`, `substract`, `multiply`, `divide` methods, and provide a test for each method.
 
 Use [Jest](https://facebook.github.io/jest/docs/en/getting-started.html) as the testing framework.
 
@@ -96,3 +95,13 @@ Use [Jest](https://facebook.github.io/jest/docs/en/getting-started.html) as the 
 For both of them, you can download the portable binaries and place them in a `bin` folder at the root of your user's folder. Example: `C:\Users\Vangelisp\bin`.
 
 Presentation URL: http://slides.com/vagelis_prokopiou/deck#/
+
+PS: The Calculator:
+```javascript
+const Calculator = {
+    add: function(int1, int2) { return int1 + int2; },
+    delete: function(int1, int2) { return int1 - int2; },
+    multiply: function(int1, int2) { return int1 * int2; },
+    divide: function(int1, int2) { return int1 / int2; }
+};
+```
