@@ -36,3 +36,44 @@ mkdir 190{0..9}-0{1..9} \
 && mkdir 20{10..99}-0{1..9} \
 && mkdir 20{10..99}-{10..12};
 ```
+
+### web-scraper
+```shell
+echo '' > ./greek-names-temp.txt;
+
+baseUrls=(
+    "https://el.wiktionary.org/w/index.php?title=%CE%9A%CE%B1%CF%84%CE%B7%CE%B3%CE%BF%CF%81%CE%AF%CE%B1:%CE%91%CE%BD%CE%B4%CF%81%CE%B9%CE%BA%CE%AC_%CE%BF%CE%BD%CF%8C%CE%BC%CE%B1%CF%84%CE%B1_(%CE%B5%CE%BB%CE%BB%CE%B7%CE%BD%CE%B9%CE%BA%CE%AC)" "https://el.wiktionary.org/wiki/%CE%9A%CE%B1%CF%84%CE%B7%CE%B3%CE%BF%CF%81%CE%AF%CE%B1:%CE%93%CF%85%CE%BD%CE%B1%CE%B9%CE%BA%CE%B5%CE%AF%CE%B1_%CE%BF%CE%BD%CF%8C%CE%BC%CE%B1%CF%84%CE%B1_(%CE%B5%CE%BB%CE%BB%CE%B7%CE%BD%CE%B9%CE%BA%CE%AC)"
+    );
+
+for baseUrl in "${baseUrls[@]}"; do
+    curl $baseUrl 2> /dev/null | sed 's/">/">\n/g' | sed 's/ href=/\nhref=/g' | sed 's/&amp;/\&/g' | perl -ne 'if( /href="(.*?mw-pages)"/ ) { print "https:${1}\n" }' > ./urls.txt;
+
+    while read url; do
+        curl "$url" 2> /dev/null | perl -ne 'if( /title="(.*?)"/ ) { print "$1\n" }' | sed 's/ (όνομα)//g;s/ (αποσαφήνιση)//g' >> ./greek-names-temp.txt;
+    done <./urls.txt
+
+    rm ./urls.txt;
+done
+
+cat ./greek-names-temp.txt | sort | uniq > ./greek-names.txt;
+rm ./greek-names-temp.txt;
+
+# Clean non names.
+sed -i "/^$/d; \
+/Add/Id; \
+/wmf/Id; \
+/Βικιλεξικό/Id; \
+/Εκτυπώσιμη/Id; \
+/Επεξεργασία/Id; \
+/Επίσκεψη/Id; \
+/Κατάλογος/Id; \
+/Κατηγορία/Id; \
+/Λίστα/Id; \
+/πολεμοποιός/Id; \
+/Προβολή/Id; \
+/Συζήτηση/Id; \
+/Το μέρος/Id; \
+/Τυπογραφικές/Id; \
+/Φόρτωση/Id;" \
+./greek-names.txt;
+```
