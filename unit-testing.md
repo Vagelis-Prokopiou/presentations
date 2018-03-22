@@ -17,8 +17,10 @@ It is the test on a “unit of work” (usually a function) that provides verifi
 5. Unit tests save development time (less time spent on bug hunting).
 6. Unit tests make easier (even possible in some cases) to change and refactor the code.
 7. Unit tests create better APIs.
-8. Unit tests remove the fear of changing/breaking the codebase.
-9. Unit tests prevent the “rotting” of the codebase.
+8. Unit tests "force" code modularity.
+9. Unit tests "force" decoupled design.
+10. Unit tests remove the fear of changing/breaking the codebase.
+11. Unit tests prevent the “rotting” of the codebase.
 
 ## What are the negative aspects of unit testing?
 Most people say it is the time needed to write the tests.
