@@ -10,7 +10,7 @@
 It is the test on a “unit of work” (usually a function) that provides verification that a known, fixed input produces a known, fixed output.
 
 ## What are the benefits of unit testing?
-1. Unit tests find bugs early.
+1. Unit tests find bugs early (before your clients do :-)).
 2. Unit tests significantly reduce production bugs.
 3. Unit tests make complex code easy to understand.
 4. Unit tests provide dependant documentation for the codebase.
