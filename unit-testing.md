@@ -1,9 +1,10 @@
 # Testing (unit testing)
 
 ## Types of testing
-1. Unit testing.
-2. Integration testing (a.k.a acceptance/end to end testing).
-3. Performance testing.
+1. Unit testing (tests a unit of an application without its external dependencies).
+2. Integration testing (a.k.a acceptance/end to end testing) (tests the application with its external dependencies).
+3. End-to-end testing (tests the application through its UI).
+4. Performance testing.
 
 ## What is a unit test?
 
