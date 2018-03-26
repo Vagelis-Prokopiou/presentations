@@ -71,6 +71,13 @@ var app = {
   }
 };
 ```
+##### Fixes:
+Now we can test our code to make sure:
+1. `init()` set the click handler.
+2. `init()` set the item count.
+3. `getItemCount()` returns what we expect.
+4. `handleDivClick()` does what we want.
+
 ### Example 2
 #### Non testable version
 ```javascript
