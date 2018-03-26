@@ -92,7 +92,7 @@ function emailClients(clients) {
 ```
 
 ##### Problems:
-1. Does more than 1 things and conceals the extra functionality.
+1. `emailClients` does more than 1 things and conceals the extra functionality.
 2. The `clientRecord.isActive` method is not directly and easily testable.
 
 #### Testable version
