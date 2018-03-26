@@ -32,8 +32,8 @@ Experience shows that writing tests reduces the overall time needed to reach pro
 ## What is the recipe for good unit tests?
 
 No secret recipe.
-1. Writing testable code.
-2. Write tests first.
+1. Write tests first.
+2. Writing testable code.
 
 ## Examples of testable code.
 ### Example 1
