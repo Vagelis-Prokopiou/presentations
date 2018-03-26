@@ -5,6 +5,7 @@
 2. Integration testing (tests the application with its external dependencies).
 3. End-to-end testing (tests the application through its UI).
 4. Performance testing.
+5. Security testing.
 
 ## What is a unit test?
 
