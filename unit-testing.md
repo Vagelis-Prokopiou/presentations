@@ -36,41 +36,73 @@ No secret recipe.
 2. Write tests first.
 
 ## Examples of testable code.
-### Bad
+### Example 1
+#### Non testable version
 ```javascript
-// Bad
-function emailClients(clients)
-{
-  clients.forEach(function(client)
-  {
+$(document).ready(function() {
+  var div1 = $('div.one');
+  var itemCount = getItemCount('li.item');
+
+  div1.on('click', function() {
+    // Do stuff
+  });
+
+  function getItemCount(selector) {
+    return $(selector).length;
+  }
+});
+```
+##### Problems:
+1. All the code is hidden in the `$(document).ready()` closure.
+2. The event handler an is anonymous function passed directly into the on function.
+
+#### Testable version
+```javascript
+var app = {
+  init: function() {
+     div1.on('click', this.handleDivClick);
+     this.itemCount = this.getItemCount('li.item');
+  },
+  getItemCount: function(selector) {
+    return $(selector).length;
+  },
+  handleDivClick: function(event) {
+    // this in here will still be div1
+  }
+};
+```
+### Example 2
+#### Non testable version
+```javascript
+function emailClients(clients) {
+  clients.forEach(function(client) {
     const clientRecord = database.lookup(client);
-    if (clientRecord.isActive())
-    {
-      email(client);
+    if (clientRecord.isActive()) {
+        email(client);
     }
   });
 }
 ```
 
-### Good
+##### Problems:
+1. Does more than 1 things and conceals the extra functionality.
+2. The `clientRecord.isActive` method is not directly and easily testable.
+
+#### Testable version
 ```javascript
-// Good.
-function emailActiveClients(clients)
-{
+function isActiveClient(client) {
+  const clientRecord = database.lookup(client);
+  return clientRecord.isActive();
+}
+
+function emailActiveClients(clients) {
   clients
     .filter(isActiveClient)
     .forEach(email);
 }
-
-function isActiveClient(client)
-{
-  const clientRecord = database.lookup(client);
-  return clientRecord.isActive();
-}
 ```
 
 ## Examples of unit testing.
-
 ### Test suite structure
 ```javascript
 describe('suiteName', function()
