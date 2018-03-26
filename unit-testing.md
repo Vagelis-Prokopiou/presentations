@@ -33,7 +33,7 @@ Experience shows that writing tests reduces the overall time needed to reach pro
 
 No secret recipe.
 1. Write tests first.
-2. Writing testable code.
+2. Write testable code.
 
 ## Examples of testable code.
 ### Example 1
