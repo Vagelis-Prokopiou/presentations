@@ -80,4 +80,5 @@ sed -i "/^$/d; \
 
 ### Refactoring: Providing new variable to test case.
 ```shell
-find Scripts/Company/DD_Regular/Risk_High/ -type f | while read file; do sed -i "s/\(Activities\/1.9.2.*targetRisk\)\]/\1, ('calculatedRisk') : 2.25]/" $file; done;```
+find Scripts/Company/DD_Regular/Risk_High/ -type f | while read file; do sed -i "s/\(Activities\/1.9.2.*targetRisk\)\]/\1, ('calculatedRisk') : 2.25]/" $file; done;
+```
