@@ -87,3 +87,17 @@ find Scripts/Company/DD_Regular/Risk_High/ -type f | while read file; do sed -i 
 ```shell
 echo "$(($(find Scripts/ -type f | wc -l) - $(find Scripts/Base_tests/ -type f | wc -l))) tests";
 ```
+
+### Removing argument from test
+```shell
+Command:
+grep -irnl "1.11.1')," Scripts | while read file; do sed -Ei "s/(^.*1.11.1'\),\s*\[)\('transitionName'\)\s*:\s*'Yes, permit'/\1:/gi" $file; done;
+
+Result (with spaces):
+-WebUI.callTestCase(findTestCase('Daimler/Base_tests/Activities/1.11.1'), [('transitionName') : 'Yes, permit'], FailureHandling.STOP_ON_FAILURE)
++WebUI.callTestCase(findTestCase('Daimler/Base_tests/Activities/1.11.1'), [:], FailureHandling.STOP_ON_FAILURE)
+
+Result (without spaces):
+-WebUI.callTestCase(findTestCase('Daimler/Base_tests/Activities/1.11.1'), [('transitionName'):'Yes, permit'], FailureHandling.STOP_ON_FAILURE)
++WebUI.callTestCase(findTestCase('Daimler/Base_tests/Activities/1.11.1'), [:], FailureHandling.STOP_ON_FAILURE)
+```
