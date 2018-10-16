@@ -101,3 +101,8 @@ Result (without spaces):
 -WebUI.callTestCase(findTestCase('Daimler/Base_tests/Activities/1.11.1'), [('transitionName'):'Yes, permit'], FailureHandling.STOP_ON_FAILURE)
 +WebUI.callTestCase(findTestCase('Daimler/Base_tests/Activities/1.11.1'), [:], FailureHandling.STOP_ON_FAILURE)
 ```
+
+### Get all activities that do not expect any parameters.
+```shell
+grep -irn '\[:\]' Scripts/Daimler/ | cut -d':' -f3 | sort | uniq | sed "s/WebUI.callTestCase(findTestCase('Daimler\/Base_tests//g; s/\/Activities\///; s/TC\///; s/'),\s*\[//; s/\s*//g"
+```
