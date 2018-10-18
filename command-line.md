@@ -106,3 +106,8 @@ Result (without spaces):
 ```shell
 grep -irn '\[:\]' Scripts/Daimler/ | cut -d':' -f3 | sort | uniq | sed "s/WebUI.callTestCase(findTestCase('Daimler\/Base_tests//g; s/\/Activities\///; s/TC\///; s/'),\s*\[//; s/\s*//g"
 ```
+
+### Get all users from the Profiles.
+```shell
+grep -rn User Profiles/ | cut -d':' -f3 | sed 's/\s*//g; s/<name>//; s/<\/name>//; s/<init.*//' | sort | uniq
+```
