@@ -116,3 +116,8 @@ grep -rn User Profiles/ | cut -d':' -f3 | sed 's/\s*//g; s/<name>//; s/<\/name>/
 ```shell
 grep -r 'public class DFE' Items/ | sed 's|Items.*class DFE||g; s| :.*||';
 ```
+
+### Get all existing attachment GUIDs.
+```shell
+find . -type f | cut -d'/' -f 3 > GUIDs.txt
+```
