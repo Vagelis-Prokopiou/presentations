@@ -119,5 +119,14 @@ grep -r 'public class DFE' Items/ | sed 's|Items.*class DFE||g; s| :.*||';
 
 ### Get all existing attachment GUIDs.
 ```shell
-find . -type f | cut -d'/' -f 3 > GUIDs.txt
+find . -type f | cut -d'/' -f 3 > GUIDs.txt;
+```
+
+### Replace section in file path.
+```shell
+# Method 1.
+find . -type f -exec bash -c "echo {} | sed 's|SEARCH_PATTERN|REPLACEMENT_PATTERN|g'" \;
+
+# Method 2.
+find . -type f | xargs -i echo "{}" | sed 's|SEARCH_PATTERN|REPLACEMENT_PATTERN|g';
 ```
