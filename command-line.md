@@ -130,3 +130,25 @@ find . -type f -exec bash -c "echo {} | sed 's|SEARCH_PATTERN|REPLACEMENT_PATTER
 # Method 2.
 find . -type f | xargs -i echo "{}" | sed 's|SEARCH_PATTERN|REPLACEMENT_PATTERN|g';
 ```
+
+### Katalon generate Docs.
+```shell
+function katalon-generate-docs() {
+    user_dir=$(echo ~);
+    export JAVA_HOME="${user_dir}/Downloads/programs/JDK";
+    sed=$(echo ${user_dir}/Downloads/programs/PortableGit/usr/bin/sed);
+    katalon_project_path=$(echo ${user_dir}/Desktop/katalon-mcs);
+    docs_directory=$(echo ${katalon_project_path}/Docs);
+    groovydoc_executable=$(echo ${user_dir}/Downloads/programs/groovy-2.5.6/bin/groovydoc);
+    packages=$(find ./Keywords/ -type d | grep Key);
+    cleaned_packages=$(echo "${packages}" | ${sed} 's|./Keywords/||g' | xargs);
+
+    echo "Deleting previous Docs...";
+    rm -rf ${docs_directory}/*;
+    echo "Previous Docs deleted.";
+
+    echo -e "\nGenerating new Docs..."
+    ${groovydoc_executable} -d ${docs_directory} -sourcepath ${katalon_project_path}/Keywords ${cleaned_packages};
+    echo "New Docs generated.";
+}
+```
