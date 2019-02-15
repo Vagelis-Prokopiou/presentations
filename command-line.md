@@ -153,3 +153,14 @@ function katalon-generate-docs() {
     echo "New Docs generated.";
 }
 ```
+
+### Find zombie test cases.
+```shell
+find Scripts/ -type d | while read dir;
+do
+    number_of_files=$(find "$dir" -maxdepth 1 -type f | wc -l);
+    if [ "$number_of_files" -gt 1 ]; then
+        echo "Dir: $dir, Number of files: $number_of_files"
+    fi
+done;
+```
