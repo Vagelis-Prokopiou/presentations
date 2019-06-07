@@ -164,3 +164,11 @@ do
     fi
 done;
 ```
+
+### Mass delete of files/folders with certain naming pattern.
+```shell
+# Example pattern: fffaf275-6286-459b-8cc4-4c44c4f796c6
+find . -type d -regextype grep -regex '\./.\{8\}-.*' | while read dir; do rm -rf $dir; done;
+```
+
+### Mass file renaming.
